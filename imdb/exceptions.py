@@ -1,5 +1,8 @@
 class ImdbBaseError(Exception):
     pass
 
-class ImdbInvalidLocate(ImdbBaseError):
+class ImdbInvalidLocale(ImdbBaseError):
+    pass
+
+class ImdbRequestError(ImdbBaseError):
     pass

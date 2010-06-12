@@ -16,6 +16,8 @@ import urllib2
 from hmac import HMAC
 from hashlib import sha1
 
+from .exceptions import ImdbRequestError, ImdbInvalidLocale
+
 
 class Imdb(object):
 
@@ -57,7 +59,7 @@ class Imdb(object):
             if match is not None:
                 self._locale = locale
             else:
-                raise Exception('set_locale(): Format should be xx_XX. For example en_US.')
+                raise ImdbInvalidLocale('set_locale(): Format should be xx_XX. For example en_US.')
 
     def get_locale(self):
         """Returns the current locale."""
@@ -134,5 +136,5 @@ class Imdb(object):
         json_string = opener.open(request).read()
         # Make sure the JSON string can be decoded
         if json.loads(json_string) is False:
-            raise Exception('make_request(): Could not read the JSON string.')
+            raise ImdbRequestError('Could not parse the JSON string')
         return json_string
