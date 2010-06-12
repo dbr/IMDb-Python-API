@@ -10,9 +10,6 @@ from base import *
 
 
 class imdb_person(imdb):
-
-    Name = 'imdb_person'
-
     def __init__(self, url):
         """Set person ID constant and run the parent's init method.
 

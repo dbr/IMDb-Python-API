@@ -18,9 +18,6 @@ from .exceptions import ImdbRequestError, ImdbInvalidLocale
 
 
 class Imdb(object):
-
-    Name = 'imdb'
-
     # Hardcoded constants for the IMDb iPhone API - Do not change these!
     # API version
     _api = 'v1'

@@ -10,9 +10,6 @@ from base import *
 
 
 class imdb_movie(imdb):
-
-    Name = 'imdb_movie'
-
     def __init__(self, url):
         """Set title ID constant and run the parent's init method.
 
