@@ -76,7 +76,8 @@ class Imdb(object):
             # Create a string of 40 random characters for device name
             'device': ''.join([random.choice(string.letters) for x in xrange(40)]),
             'locale': self._locale,
-            'timestamp': time.time()
+            'timestamp': time.time(),
+            'sig': self._api_policy,
         }
         if isinstance(arguments, dict):
             parameter.update(arguments)
@@ -89,12 +90,8 @@ class Imdb(object):
         function -- The function/address to query on the host
         parameter -- A dict with all parameters to append on the URL
         """
-        base_url = 'http://' + self._host + function + '?'
-        # Append the parameter dictionary to the URL in a proper format
-        for key,value in parameter.items():
-            base_url += str(key) + '=' + str(value) + '&'
-        base_url += 'sig=' + self._api_policy
-        return base_url
+        enc_param = urllib.urlencode(parameter)
+        return "http://%s%s?%s" % (self._host, function, enc_param)
 
     def create_signed_url(self, base_url):
         """Create the signed URL with hmac
