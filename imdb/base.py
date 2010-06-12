@@ -56,7 +56,7 @@ class Imdb(object):
             if match is not None:
                 self._locale = locale
             else:
-                raise ImdbInvalidLocale('set_locale(): Format should be xx_XX. For example en_US.')
+                raise ImdbInvalidLocale('Format should be xx_XX. For example en_US.')
 
     def get_locale(self):
         """Returns the current locale."""
