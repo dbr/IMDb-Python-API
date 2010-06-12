@@ -17,7 +17,7 @@ from hmac import HMAC
 from hashlib import sha1
 
 
-class imdb(object):
+class Imdb(object):
 
     Name = 'imdb'
 
