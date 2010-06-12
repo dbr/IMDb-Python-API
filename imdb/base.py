@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
 """
-base.py
-
 Base class to interact with the IMDb iPhone API.
 """
 
