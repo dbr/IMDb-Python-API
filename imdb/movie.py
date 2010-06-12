@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # encoding: utf-8
+#FIXME: This file has not been refactored yet
 """
-movie.py
-
 Provides functions to interact with the movie/series features of the IMDb iPhone API.
 """
 
-from base import *
+from .base import Imdb
 
 
-class imdb_movie(imdb):
+class ImdbMovie(Imdb):
     def __init__(self, url):
         """Set title ID constant and run the parent's init method.
 

@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 # encoding: utf-8
+#FIXME: This file has not been refactored yet
 """
-features.py
-
 Provides all functions to interact with the more special features of the IMDb iPhone API.
 """
 
-from base import *
+from .base import Imdb
 from datetime import datetime
 
 
-class imdb_features(imdb):
+class ImdbFeatures(Imdb):
     def get_show_times(self, location, date = None):
         """Gets show times for provided location on provided date.
 

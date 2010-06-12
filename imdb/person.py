@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # encoding: utf-8
+#FIXME: This file has not been refactored yet
 """
-person.py
-
 Provides functions to interact with the person feature of the IMDb iPhone API.
 """
 
-from base import *
+from .base import Imdb
 
 
-class imdb_person(imdb):
+class ImdbPerson(Imdb):
     def __init__(self, url):
         """Set person ID constant and run the parent's init method.
 
