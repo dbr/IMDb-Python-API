@@ -96,7 +96,7 @@ class imdb(object):
     	Keyword arguments:
     	base_url -- The base URL from create_base_url()
     	"""
-		return base_url + '-' + HMAC(self._api_key, base_url, sha1).hexdigest()
+    	return "%s-%s" % (base_url, HMAC(self._api_key, base_url, sha1).hexdigest())
 
 	def status_check(self):
     	"""Checks if everything is working as it should be"""
