@@ -108,7 +108,7 @@ class Imdb(object):
             "system_name": "iPhone OS",
             "system_version": "3.1.2"
         }
-        js = json.loads(self.make_request('/hello', arg), 'utf-8')
+        js = self.make_request('/hello', arg)
         # Returned status should be 'ok', or there was an error
         status = js["data"]["status"]
         if status != "ok":
@@ -132,6 +132,7 @@ class Imdb(object):
         opener = urllib2.build_opener()
         json_string = opener.open(request).read()
         # Make sure the JSON string can be decoded
-        if json.loads(json_string) is False:
+        data = json.loads(json_string, 'utf-8')
+        if data is False:
             raise ImdbRequestError('Could not parse the JSON string')
-        return json_string
+        return data
