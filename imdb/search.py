@@ -7,9 +7,10 @@ Provides functions to interact with the search feature of the IMDb iPhone API.
 """
 
 from __future__ import absolute_import
-from .base import Imdb
+
 import urllib
 
+from .base import Imdb
 
 def search(term):
     i = Imdb()
