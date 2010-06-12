@@ -30,21 +30,20 @@ class imdb(object):
 	# Default locale
 	_locale = 'en_US'
 
-	"""Run a status check on initialization, to make sure everything is working"""
 	def __init__(self):
+    	"""Run a status check on initialization, to make sure everything is working"""
 		if not self.status_check():
 			raise Exception, 'status_check(): Something is wrong.'
 
-	"""Sets the locale used in requests
-
-	If no argument is passed, the locale is reset to the default en_US
-	Valid locales are: en_US, de_DE, fr_FR, pt_PT, it_IT
-
-	Keyword arguments:
-	locale -- The locale of the format xx_XX
-
-	"""
 	def set_locale(self, locale = None):
+    	"""Sets the locale used in requests
+
+    	If no argument is passed, the locale is reset to the default en_US
+    	Valid locales are: en_US, de_DE, fr_FR, pt_PT, it_IT
+
+    	Keyword arguments:
+    	locale -- The locale of the format xx_XX
+    	"""
 		if locale is None:
 			self._locale = 'en_US'
 		else:
@@ -54,17 +53,16 @@ class imdb(object):
 			else:
 				raise Exception, 'set_locale(): Format should be xx_XX. For example en_US.'
 
-	"""Returns the current locale."""
 	def get_locale(self):
+    	"""Returns the current locale."""
 		return self._locale
 
-	"""Create the parameter dict for requests
-
-	Keyword arguments:
-	arguments -- A dict with arguments to append the request
-
-	"""
 	def create_parameters(self, arguments = None):
+    	"""Create the parameter dict for requests
+
+    	Keyword arguments:
+    	arguments -- A dict with arguments to append the request
+    	"""
 		random.seed(14)
 		parameter = {
 			'api': self._api,
@@ -78,14 +76,13 @@ class imdb(object):
 			parameter.update(arguments)
 		return parameter
 
-	"""Create the base URL with parameters
-
-	Keyword arguments:
-	function -- The function/address to query on the host
-	parameter -- A dict with all parameters to append on the URL
-
-	"""
 	def create_base_url(self, function, parameter):
+    	"""Create the base URL with parameters
+
+    	Keyword arguments:
+    	function -- The function/address to query on the host
+    	parameter -- A dict with all parameters to append on the URL
+    	"""
 		base_url = 'http://' + self._host + function + '?'
 		# Append the parameter dictionary to the URL in a proper format
 		for key,value in parameter.items():
@@ -93,17 +90,16 @@ class imdb(object):
 		base_url += 'sig=' + self._api_policy
 		return base_url
 
-	"""Create the signed URL with hmac
-
-	Keyword arguments:
-	base_url -- The base URL from create_base_url()
-
-	"""
 	def create_signed_url(self, base_url):
+    	"""Create the signed URL with hmac
+
+    	Keyword arguments:
+    	base_url -- The base URL from create_base_url()
+    	"""
 		return base_url + '-' + HMAC(self._api_key, base_url, sha1).hexdigest()
 
-	"""Checks if everything is working as it should be"""
 	def status_check(self):
+    	"""Checks if everything is working as it should be"""
 		arg = {
 			"date": "",
 			"location": "",
@@ -120,13 +116,13 @@ class imdb(object):
 		else:
 			return False
 
-	"""Send the request to the host and return the JSON
-
-	Keyword arguments:
-	function -- The function/address to query on the host
-	arguments -- A dict with arguments to append the request
-	"""
 	def make_request(self, function, arguments = None):
+    	"""Send the request to the host and return the JSON
+
+    	Keyword arguments:
+    	function -- The function/address to query on the host
+    	arguments -- A dict with arguments to append the request
+    	"""
 		# Build the URL and request it
 		parameter = self.create_parameters(arguments)
 		base_url = self.create_base_url(function, parameter)

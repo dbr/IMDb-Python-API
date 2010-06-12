@@ -13,18 +13,17 @@ import urllib
 class imdb_search(imdb):
 	Name = 'imdb_search'
 
-	"""Run the parent's init method"""
 	def __init__(self):
+    	"""Run the parent's init method"""
 		super(imdb_search, self).__init__()
 
 
-	"""Return search results for the provided query
-
-	Keyword arguments:
-	search_term -- The term to query IMDb for.
-
-	"""
 	def get_search_results(self, search_term):
+    	"""Return search results for the provided query
+
+    	Keyword arguments:
+    	search_term -- The term to query IMDb for.
+    	"""
 		arg = {
 			"q": urllib.quote_plus(search_term)
 		}
