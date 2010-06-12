@@ -38,8 +38,7 @@ class Imdb(object):
 
     def __init__(self):
         """Run a status check on initialization, to make sure everything is working"""
-        if not self.status_check():
-            raise Exception, 'status_check(): Something is wrong.'
+        self.status_check()
 
     def set_locale(self, locale = None):
         """Sets the locale used in requests
@@ -113,8 +112,11 @@ class Imdb(object):
             "system_version": "3.1.2"
         }
         js = json.loads(self.make_request('/hello', arg), 'utf-8')
-        # Compare the returned status to 'ok', make sure everything is alright
-        return cmp(js["data"]["status"], "ok") == 0
+        # Returned status should be 'ok', or there was an error
+        status = js["data"]["status"]
+        if status != "ok":
+            raise ImdbRequestError(
+                "Status check did not return 'ok', was %r" % (status))
 
     def make_request(self, function, arguments = None):
         """Send the request to the host and return the JSON
