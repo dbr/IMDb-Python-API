@@ -6,7 +6,13 @@ base.py
 Base class to interact with the IMDb iPhone API.
 """
 
-import re, string, random, time, json, urllib2
+import re
+import time
+import json
+import random
+import string
+import urllib
+import urllib2
 from hmac import HMAC
 from hashlib import sha1
 
