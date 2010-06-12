@@ -11,10 +11,10 @@ from movie import *
 
 
 def main():
-	search = imdb_search()
-	print search.get_search_results('ghost busters')
+    search = imdb_search()
+    print search.get_search_results('ghost busters')
 
 
 if __name__ == '__main__':
-	main()
+    main()
 
