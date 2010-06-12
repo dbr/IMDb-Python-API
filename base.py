@@ -111,10 +111,7 @@ class imdb(object):
 		}
 		js = json.loads(self.make_request('/hello', arg), 'utf-8')
 		# Compare the returned status to 'ok', make sure everything is alright
-		if cmp(js["data"]["status"], "ok") == 0:
-			return True
-		else:
-			return False
+		return cmp(js["data"]["status"], "ok") == 0
 
 	def make_request(self, function, arguments = None):
     	"""Send the request to the host and return the JSON
