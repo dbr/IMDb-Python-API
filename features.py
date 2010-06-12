@@ -11,14 +11,6 @@ from datetime import datetime
 
 
 class imdb_features(imdb):
-
-    Name = 'imdb_features'
-
-    """Run the parent's init method."""
-    def __init__(self):
-        super(imdb_features, self).__init__()
-
-
     def get_show_times(self, location, date = None):
         """Gets show times for provided location on provided date.
 
